@@ -3,10 +3,10 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"              # Free tier
 
   network_interface {
+    # Gets placed in AZ of interface
     network_interface_id = aws_network_interface.net-if.id
     device_index         = 0
   }
-  # subnet_id   = aws_subnet.main_subnet.id # not required if have interface inside vpc?
 
   tags = {
     Name = "basic_ec2"
@@ -20,4 +20,12 @@ resource "aws_network_interface" "net-if" {
   tags = {
     Name = "${var.default_vpc_name}_IF"
   }
+}
+
+output "public_ip_ec2" {
+  value = aws_instance.web.public_ip
+}
+
+output "public_dns_ec2" {
+  value = aws_instance.web.public_dns
 }
