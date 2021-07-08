@@ -34,6 +34,32 @@ resource "aws_s3_bucket" "log_bkt" {
   bucket = var.priv_s3_name
   acl    = "private"
 
+    lifecycle_rule {
+    id      = "log" # Identifier for rule
+    enabled = true
+
+    prefix = "log/" # everything placed here gets cycled
+
+    tags = {
+      rule      = "log"
+      autoclean = "true"
+    }
+
+    transition {
+      days          = 10
+      storage_class = "STANDARD_IA" 
+    }
+
+    transition {
+      days          = 20
+      storage_class = "GLACIER"
+    }
+
+    expiration {
+      days = 30
+    }
+  }
+
   tags = {
     Name        = "${var.priv_s3_name}"
     Test        = "true"
