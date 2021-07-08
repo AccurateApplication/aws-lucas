@@ -46,17 +46,17 @@ resource "aws_s3_bucket" "log_bkt" {
     }
 
     transition {
-      days          = 10
+      days          = 30
       storage_class = "STANDARD_IA" 
     }
 
     transition {
-      days          = 20
+      days          = 60
       storage_class = "GLACIER"
     }
 
     expiration {
-      days = 30
+      days = 90
     }
   }
 
