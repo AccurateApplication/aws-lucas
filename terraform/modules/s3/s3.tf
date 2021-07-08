@@ -18,7 +18,7 @@ resource "aws_s3_bucket_object" "object1" {
   key    = "index.html"
   acl    = "public-read"
   source = "index.html"
-  etag   = filemd5("index.html")
+  # etag   = filemd5("index.html")
 }
 
 resource "aws_s3_bucket_object" "object2" {
@@ -26,6 +26,6 @@ resource "aws_s3_bucket_object" "object2" {
   key    = "error.html"
   acl    = "public-read"
   source = "error.html"
-  etag   = filemd5("error.html")
+  # etag   = filemd5("error.html")
 
 }
