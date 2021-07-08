@@ -13,16 +13,6 @@ resource "aws_s3_bucket" "bkt" {
   }
 }
 
-resource "local_file" "html_file" {
-  content  = "<h1> Hello </h1>"
-  filename = "./index.html"
-}
-
-resource "local_file" "error_404" {
-  content  = "<h1> 404 big error </h1>"
-  filename = "./error.html"
-}
-
 resource "aws_s3_bucket_object" "object1" {
   bucket = aws_s3_bucket.bkt.id
   key    = "index.html"
