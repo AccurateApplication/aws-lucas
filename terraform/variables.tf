@@ -10,6 +10,10 @@ variable "region-az1" {
   type        = string
 }
 
+variable "pub_s3_name" {
+  type = string
+}
+
 variable "default_vpc_name" {
   default = "Otto"
   type    = string
