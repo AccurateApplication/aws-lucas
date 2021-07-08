@@ -12,6 +12,4 @@ module "s3_bucket" {
   source = "./modules/s3"
 
   depends_on = [local_file.error_404, local_file.index_file]
-  # depends_on = [local_file.index_404]
-
 }

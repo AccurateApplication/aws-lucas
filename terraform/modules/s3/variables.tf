@@ -1,3 +1,7 @@
 variable "pub_s3_name" {
-  type = string
+  type    = string
+}
+
+variable "priv_s3_name" {
+  type    = string
 }

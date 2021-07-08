@@ -8,8 +8,8 @@ resource "aws_s3_bucket" "bkt" {
 
   tags = {
     Name        = "${var.pub_s3_name}"
-    test        = "true"
-    description = "Used to display static html files"
+    Test        = "true"
+    Description = "Used to display static html files"
   }
 }
 
@@ -27,5 +27,16 @@ resource "aws_s3_bucket_object" "object2" {
   acl    = "public-read"
   source = "error.html"
   # etag   = filemd5("error.html")
+}
 
+
+resource "aws_s3_bucket" "log_bkt" {
+  bucket = var.priv_s3_name
+  acl    = "private"
+
+  tags = {
+    Name        = "${var.priv_s3_name}"
+    Test        = "true"
+    Description = "Bucket which will receive logs"
+  }
 }
